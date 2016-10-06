@@ -1,15 +1,15 @@
 import sys, os
 
-def checkOS():
-    _osProb = {
-        "win" : 0,
-        "*nix" : 0
-    }
-    try:
-        sys.getwindowsversion()
-        _osProb["win"] += 1
-    except:
-        _osProb["*nix"] += 1
 
-    if (os.environ["PROCESSOR_ARCHITECTURE"] == "x86" or os.environ["PROCESSOR_ARCHITECTURE"] == "x64"):
-        _osProb["win"] += 1
+def determineOS():
+    OS = sys.platform.casefold()
+##    OS = "Linux-3.3.0-8.fc16.x86_64-x86_64-with-fedora-16-Verne"  #DEBUG
+    win = (OS.find("win") != -1)
+    if (win):
+        return "win"
+    else:
+        return "*nix"
+
+if __name__ == "__main__":
+    OS = determineOS()
+    print (OS)
