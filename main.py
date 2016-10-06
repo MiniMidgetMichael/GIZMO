@@ -1,5 +1,6 @@
 import sys, os
-
+from Windows import *
+from Linux import *
 
 def determineOS():
     OS = sys.platform.casefold()
